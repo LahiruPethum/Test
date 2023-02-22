@@ -20,5 +20,5 @@ public class ItemDTO {
     private double itemPrice;
     private double itemCount;
     private Date data;
-    private boolean remarks;
+    private String remarks;
 }

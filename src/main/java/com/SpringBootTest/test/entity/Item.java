@@ -9,6 +9,7 @@ import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
@@ -47,8 +48,16 @@ public class Item {
     @Column(name = "added_date",columnDefinition = "DATETIME")
     private Date data;
 
-    @Column(name = "remarks", columnDefinition = "TINYINT default 1")
-    private boolean remarks;
+    @Column(name = "remarks", length = 50,nullable = false)
+    private String remarks;
 
-
+    public Item(String itemName, Category category, String sku, String description, double itemPrice, double itemCount, String remarks) {
+        this.itemName = itemName;
+        this.category = category;
+        this.sku = sku;
+        this.description = description;
+        this.itemPrice = itemPrice;
+        this.itemCount = itemCount;
+        this.remarks = remarks;
+    }
 }

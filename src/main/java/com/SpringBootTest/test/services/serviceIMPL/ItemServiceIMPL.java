@@ -1,6 +1,7 @@
 package com.SpringBootTest.test.services.serviceIMPL;
 
 import com.SpringBootTest.test.dto.ItemDTO;
+import com.SpringBootTest.test.dto.request.RequestItemDTO;
 import com.SpringBootTest.test.entity.Item;
 import com.SpringBootTest.test.exception.NotFoundExeption;
 import com.SpringBootTest.test.repo.ItemRepo;
@@ -16,17 +17,17 @@ public class ItemServiceIMPL implements ItemService {
 
 
     @Override
-    public void addItem(ItemDTO itemDTO) {
+    public void addItem(RequestItemDTO requestItemDTO) {
         Item item = new Item(
-                itemDTO.getItemId(),
-                itemDTO.getItemName(),
-                itemDTO.getCategory(),
-                itemDTO.getSku(),
-                itemDTO.getDescription(),
-                itemDTO.getItemPrice(),
-                itemDTO.getItemCount(),
-                itemDTO.getData(),
-                itemDTO.isRemarks()
+//                itemDTO.getItemId(),
+                requestItemDTO.getItemName(),
+                requestItemDTO.getCategory(),
+                requestItemDTO.getSku(),
+                requestItemDTO.getDescription(),
+                requestItemDTO.getItemPrice(),
+                requestItemDTO.getItemCount(),
+//                itemDTO.getData(),
+                requestItemDTO.getRemarks()
 
         );
 

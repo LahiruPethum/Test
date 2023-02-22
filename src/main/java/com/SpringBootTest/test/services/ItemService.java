@@ -1,11 +1,12 @@
 package com.SpringBootTest.test.services;
 
 import com.SpringBootTest.test.dto.ItemDTO;
+import com.SpringBootTest.test.dto.request.RequestItemDTO;
 
 public interface ItemService {
 
 
-    void addItem(ItemDTO itemDTO);
+    void addItem(RequestItemDTO requestItemDTO);
 
 
 

@@ -1,6 +1,7 @@
 package com.SpringBootTest.test.controller;
 
 import com.SpringBootTest.test.dto.ItemDTO;
+import com.SpringBootTest.test.dto.request.RequestItemDTO;
 import com.SpringBootTest.test.services.ItemService;
 import com.SpringBootTest.test.utill.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,9 @@ public class ItemController {
     private ItemService itemService;
 
     @PostMapping(path = "/add")
-        public ResponseEntity<StandardResponse> saveItem(@RequestBody ItemDTO itemDTO){
+        public ResponseEntity<StandardResponse> saveItem(@RequestBody RequestItemDTO requestItemDTO){
 
-            itemService.addItem(itemDTO);
+            itemService.addItem(requestItemDTO);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(200, "New item added"),
                 HttpStatus.CREATED
