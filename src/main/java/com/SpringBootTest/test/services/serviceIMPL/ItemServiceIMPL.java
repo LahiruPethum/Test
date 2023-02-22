@@ -2,6 +2,7 @@ package com.SpringBootTest.test.services.serviceIMPL;
 
 import com.SpringBootTest.test.dto.ItemDTO;
 import com.SpringBootTest.test.entity.Item;
+import com.SpringBootTest.test.exception.NotFoundExeption;
 import com.SpringBootTest.test.repo.ItemRepo;
 import com.SpringBootTest.test.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,9 +58,9 @@ public class ItemServiceIMPL implements ItemService {
             return "updated";
 
         }else {
-            System.out.println("no item to update");
+            throw new NotFoundExeption("Validation Exception");
         }
-        return "no item to update";
+
     }
 
     @Override

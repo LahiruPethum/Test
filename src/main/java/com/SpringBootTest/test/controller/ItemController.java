@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/v1/item")
+@RequestMapping("api/inventory")
 @CrossOrigin
 public class ItemController {
 
@@ -37,7 +37,7 @@ public class ItemController {
     }
 
     @DeleteMapping(path = "/remove",
-    params = "id")
+    params = "sku")
     public ResponseEntity<StandardResponse> deleteItem(@PathVariable(value = "sku")int id) {
 
         String deleted = itemService.deleteItem(id);
