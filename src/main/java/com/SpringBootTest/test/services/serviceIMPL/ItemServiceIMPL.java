@@ -65,7 +65,8 @@ public class ItemServiceIMPL implements ItemService {
     }
 
     @Override
-    public String deleteItem(int id) {
+    public String deleteItem(String sku) {
+      
         return null;
     }
 }

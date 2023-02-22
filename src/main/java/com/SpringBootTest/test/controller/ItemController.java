@@ -39,9 +39,9 @@ public class ItemController {
 
     @DeleteMapping(path = "/remove",
     params = "sku")
-    public ResponseEntity<StandardResponse> deleteItem(@PathVariable(value = "sku")int id) {
+    public ResponseEntity<StandardResponse> deleteItem(@RequestParam(value = "sku")String sku) {
 
-        String deleted = itemService.deleteItem(id);
+        String deleted = itemService.deleteItem(sku);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(200, "item removed"),
                 HttpStatus.CREATED
