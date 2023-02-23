@@ -6,12 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
 public class RequestItemDTO {
+
 
     @NotBlank(message = "The name field is required.")
     private String itemName;
@@ -27,4 +28,6 @@ public class RequestItemDTO {
     private double itemCount;
     @NotBlank(message = "The remark field is required.")
     private String remarks;
+
+
 }

@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("api/inventory")
 @CrossOrigin
@@ -23,7 +25,7 @@ public class ItemController {
 
         String save =  itemService.addItem(requestItemDTO);
         return new ResponseEntity<StandardResponse>(
-                new StandardResponse(200, requestItemDTO.getItemName()+"added"),
+                new StandardResponse(200, save),
                 HttpStatus.CREATED
         );
     }
@@ -37,11 +39,11 @@ public class ItemController {
         );
     }
 
-    @DeleteMapping(path = "/remove",
-    params = "id")
-    public ResponseEntity<StandardResponse> deleteItem(@RequestParam(value = "id")int id) {
+    @DeleteMapping(path = "/remove/{id}",
+    params = "sku")
+    public ResponseEntity<StandardResponse> deleteItem(@PathVariable(value = "id")int id,@RequestParam(value = "sku")String sku) {
 
-        String deleted = itemService.deleteItem(id);
+        String deleted = itemService.deleteItem(id,sku);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(200, deleted),
                 HttpStatus.CREATED

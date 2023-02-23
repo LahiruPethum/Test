@@ -6,6 +6,8 @@ import com.SpringBootTest.test.entity.Item;
 import com.SpringBootTest.test.exception.NotFoundExeption;
 import com.SpringBootTest.test.repo.ItemRepo;
 import com.SpringBootTest.test.services.ItemService;
+import com.SpringBootTest.test.utill.mappers.ItemMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,21 +17,15 @@ public class ItemServiceIMPL implements ItemService {
     @Autowired
     private ItemRepo itemRepo;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
+    private ItemMapper itemMapper;
 
     @Override
     public String addItem(RequestItemDTO requestItemDTO) {
-        Item item = new Item(
-//                itemDTO.getItemId(),
-                requestItemDTO.getItemName(),
-                requestItemDTO.getCategory(),
-                requestItemDTO.getSku(),
-                requestItemDTO.getDescription(),
-                requestItemDTO.getItemPrice(),
-                requestItemDTO.getItemCount(),
-//                itemDTO.getData(),
-                requestItemDTO.getRemarks()
-
-        );
+        Item item = itemMapper.requsetDtoToEntity(requestItemDTO);
 
         if (!itemRepo.existsById(item.getItemId())) {
             itemRepo.save(item);
@@ -44,6 +40,7 @@ public class ItemServiceIMPL implements ItemService {
     @Override
     public String updateItem(ItemDTO itemDTO) {
         if (itemRepo.existsById(itemDTO.getItemId())) {
+
             Item item = itemRepo.getById(itemDTO.getItemId());
 
             item.setItemName(itemDTO.getItemName());
@@ -66,7 +63,7 @@ public class ItemServiceIMPL implements ItemService {
     }
 
     @Override
-    public String deleteItem(int id) {
+    public String deleteItem(int id,String sku) {
 
         if (itemRepo.existsById(id)){
             itemRepo.deleteById(id);
