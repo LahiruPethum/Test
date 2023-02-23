@@ -71,7 +71,7 @@ public class ItemServiceIMPL implements ItemService {
             itemRepo.deleteById(id);
             return "item removed";
         }else {
-            return "Validation Exception";
+            throw new NotFoundExeption("Validation Exception");
         }
     }
 }
