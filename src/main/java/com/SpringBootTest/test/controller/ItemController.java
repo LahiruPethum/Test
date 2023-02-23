@@ -23,7 +23,7 @@ public class ItemController {
 
           itemService.addItem(requestItemDTO);
         return new ResponseEntity<StandardResponse>(
-                new StandardResponse(200, "New item added", requestItemDTO.getItemName()),
+                new StandardResponse(200, requestItemDTO.getItemName()+"added"),
                 HttpStatus.CREATED
         );
     }
@@ -32,7 +32,7 @@ public class ItemController {
     public ResponseEntity<StandardResponse> updateItem(@RequestBody ItemDTO itemDTO){
         String update = itemService.updateItem(itemDTO);
         return new ResponseEntity<StandardResponse>(
-                new StandardResponse(200, "item updated",update),
+                new StandardResponse(200, update),
                 HttpStatus.CREATED
         );
     }
@@ -43,7 +43,7 @@ public class ItemController {
 
         String deleted = itemService.deleteItem(id);
         return new ResponseEntity<StandardResponse>(
-                new StandardResponse(200, "item removed",deleted),
+                new StandardResponse(200, deleted),
                 HttpStatus.CREATED
         );
     }
