@@ -17,7 +17,7 @@ public class ItemServiceIMPL implements ItemService {
 
 
     @Override
-    public void addItem(RequestItemDTO requestItemDTO) {
+    public String addItem(RequestItemDTO requestItemDTO) {
         Item item = new Item(
 //                itemDTO.getItemId(),
                 requestItemDTO.getItemName(),
@@ -33,10 +33,10 @@ public class ItemServiceIMPL implements ItemService {
 
         if (!itemRepo.existsById(item.getItemId())) {
             itemRepo.save(item);
-
+            return "New item added";
         } else {
             System.out.println("already in table");
-
+            throw new NotFoundExeption("Validation Exception");
         }
     }
 
@@ -60,6 +60,7 @@ public class ItemServiceIMPL implements ItemService {
 
         }else {
             throw new NotFoundExeption("Validation Exception");
+
         }
 
     }

@@ -6,7 +6,7 @@ import com.SpringBootTest.test.dto.request.RequestItemDTO;
 public interface ItemService {
 
 
-    void addItem(RequestItemDTO requestItemDTO);
+    String addItem(RequestItemDTO requestItemDTO);
 
 
 

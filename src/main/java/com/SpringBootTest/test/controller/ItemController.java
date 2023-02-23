@@ -21,7 +21,7 @@ public class ItemController {
     @PostMapping(path = "/add")
         public ResponseEntity<StandardResponse> saveItem(@RequestBody RequestItemDTO requestItemDTO){
 
-          itemService.addItem(requestItemDTO);
+        String save =  itemService.addItem(requestItemDTO);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(200, requestItemDTO.getItemName()+"added"),
                 HttpStatus.CREATED
