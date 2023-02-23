@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class AppWideExceptionHandler {
     @ExceptionHandler(NotFoundExeption.class)
     public ResponseEntity hanleNotFoundException(NotFoundExeption e){
-        return new ResponseEntity(new StandardResponse(401,"Validation Exception"), HttpStatus.NOT_FOUND);
+        return new ResponseEntity(new StandardResponse(401,"Validation Exception",e.getMessage()), HttpStatus.NOT_FOUND);
     }
 }

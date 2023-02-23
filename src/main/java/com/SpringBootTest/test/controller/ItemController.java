@@ -21,9 +21,9 @@ public class ItemController {
     @PostMapping(path = "/add")
         public ResponseEntity<StandardResponse> saveItem(@RequestBody RequestItemDTO requestItemDTO){
 
-            itemService.addItem(requestItemDTO);
+          itemService.addItem(requestItemDTO);
         return new ResponseEntity<StandardResponse>(
-                new StandardResponse(200, "New item added"),
+                new StandardResponse(200, "New item added", requestItemDTO.getItemName()),
                 HttpStatus.CREATED
         );
     }
@@ -32,18 +32,18 @@ public class ItemController {
     public ResponseEntity<StandardResponse> updateItem(@RequestBody ItemDTO itemDTO){
         String update = itemService.updateItem(itemDTO);
         return new ResponseEntity<StandardResponse>(
-                new StandardResponse(200, "item updated"),
+                new StandardResponse(200, "item updated",update),
                 HttpStatus.CREATED
         );
     }
 
     @DeleteMapping(path = "/remove",
-    params = "sku")
-    public ResponseEntity<StandardResponse> deleteItem(@RequestParam(value = "sku")String sku) {
+    params = "id")
+    public ResponseEntity<StandardResponse> deleteItem(@RequestParam(value = "id")int id) {
 
-        String deleted = itemService.deleteItem(sku);
+        String deleted = itemService.deleteItem(id);
         return new ResponseEntity<StandardResponse>(
-                new StandardResponse(200, "item removed"),
+                new StandardResponse(200, "item removed",deleted),
                 HttpStatus.CREATED
         );
     }

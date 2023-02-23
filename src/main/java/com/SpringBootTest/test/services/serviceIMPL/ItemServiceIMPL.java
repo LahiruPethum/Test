@@ -65,8 +65,13 @@ public class ItemServiceIMPL implements ItemService {
     }
 
     @Override
-    public String deleteItem(String sku) {
-      
-        return null;
+    public String deleteItem(int id) {
+
+        if (itemRepo.existsById(id)){
+            itemRepo.deleteById(id);
+            return "item removed";
+        }else {
+            return "Validation Exception";
+        }
     }
 }

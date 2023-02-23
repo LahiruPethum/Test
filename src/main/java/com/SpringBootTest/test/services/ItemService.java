@@ -12,5 +12,5 @@ public interface ItemService {
 
     String updateItem(ItemDTO itemDTO);
 
-    String deleteItem(String sku);
+    String deleteItem(int id);
 }
